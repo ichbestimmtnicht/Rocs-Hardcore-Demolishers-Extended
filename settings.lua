@@ -1,0 +1,58 @@
+data:extend({
+  {
+    type = "bool-setting",
+    name = "rocs-hardcore-demolishers-stronger-demolishers",
+    setting_type = "startup",
+    default_value = true,
+    order = "c",
+  },
+  {
+    type = "bool-setting",
+    name = "rocs-hardcore-smaller-demolisher-territory-radius",
+    setting_type = "startup",
+    default_value = true,
+    order = "e",
+  },
+  {
+    type = "bool-setting",
+    name = "rocs-hardcore-vulcanus-condensed-map",
+    setting_type = "startup",
+    default_value = true,
+    order = "f",
+  },
+  {
+    type = "bool-setting",
+    name = "rocs-hardcore-vulcanus-cooler-steam",
+    setting_type = "startup",
+    default_value = true,
+    order = "g",
+  },
+  {
+    type = "bool-setting",
+    name = "rocs-hardcore-vulcanus-nerf-coal-liquefaction-recipes",
+    setting_type = "startup",
+    default_value = false,
+    order = "h",
+  },
+  {
+    type = "bool-setting",
+    name = "rocs-hardcore-advanced-casting-recipe",
+    setting_type = "startup",
+    default_value = true,
+    hidden = true,
+  },
+  {
+    type = "bool-setting",
+    name = "rocs-hardcore-demolishers-cargo-drops-need-research",
+    setting_type = "startup",
+    default_value = true,
+    hidden = true,
+  },
+  {
+    type = "bool-setting",
+    name = "rocs-hardcore-demolishers-cargo-drop-research-needs-space-science",
+    setting_type = "startup",
+    default_value = true,
+    hidden = true,
+  },
+})

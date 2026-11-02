@@ -1,0 +1,128 @@
+local util = require("util")
+
+if mods["VFG-Cargo-Drops-Require-Research"] then
+  data:extend({
+    {
+      type = "technology",
+      name = "advanced-casting",
+      icon = "__Rocs-Hardcore-Demolishers__/graphics/technology/advanced-casting.png",
+      icon_size = 256,
+      prerequisites = {
+        "metallurgic-science-pack",
+      },
+      unit = {
+        count = 100,
+        ingredients = {
+          { "automation-science-pack", 1 },
+          { "logistic-science-pack", 1 },
+          { "chemical-science-pack", 1 },
+          { "metallurgic-science-pack", 1 },
+        },
+        time = 60,
+      },
+      effects = {
+        {
+          type = "unlock-recipe",
+          recipe = "concrete-from-molten-iron",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "casting-low-density-structure",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "casting-steel",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "casting-iron-gear-wheel",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "casting-iron-stick",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "casting-pipe",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "casting-pipe-to-ground",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "casting-copper-cable",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "transport-belt-metallurgy",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "underground-belt-metallurgy",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "splitter-metallurgy",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "fast-transport-belt-metallurgy",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "fast-underground-belt-metallurgy",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "fast-splitter-metallurgy",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "express-transport-belt-metallurgy",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "express-underground-belt-metallurgy",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "express-splitter-metallurgy",
+        },
+        {
+          type = "unlock-recipe",
+          recipe = "foundry-metallurgy",
+        },
+      },
+    },
+  })
+  -- Clone recipes so that we can enable and disable foundries to craft them independent of assemblers:
+  local entity_recipes_to_clone = {
+    "transport-belt",
+    "underground-belt",
+    "splitter",
+    "fast-transport-belt",
+    "fast-underground-belt",
+    "fast-splitter",
+    "express-transport-belt",
+    "express-underground-belt",
+    "express-splitter",
+    "foundry",
+  }
+  for _, recipe_name in pairs(entity_recipes_to_clone) do
+    local recipe = util.table.deepcopy(data.raw.recipe[recipe_name])
+    recipe.categories = { "metallurgy" }
+    recipe.enabled = false
+    recipe.localised_name = {
+      "",
+      { "entity-name." .. recipe_name },
+      { "rocs-hardcore-vulcanus.metallurgy-recipe-suffix" },
+    }
+    recipe.localised_description = { "entity-description." .. recipe_name }
+    recipe.hide_from_player_crafting = true
+    recipe.hidden_in_factoriopedia = true
+    recipe.allow_as_intermediate = false
+    recipe.name = recipe_name .. "-metallurgy"
+    data:extend({ recipe })
+  end
+end
