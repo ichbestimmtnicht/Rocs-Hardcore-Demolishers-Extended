@@ -5,7 +5,7 @@ if mods["VFG-Cargo-Drops-Require-Research"] then
     {
       type = "technology",
       name = "advanced-casting",
-      icon = "__Rocs-Hardcore-Demolishers__/graphics/technology/advanced-casting.png",
+      icon = "__Rocs-Hardcore-Demolishers-Extended__/graphics/technology/advanced-casting.png",
       icon_size = 256,
       prerequisites = {
         "metallurgic-science-pack",
